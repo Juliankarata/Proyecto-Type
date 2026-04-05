@@ -16,6 +16,7 @@
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
     "@types/node": "^25.5.0",
+    "@vitest/coverage-v8": "4.1.1",
     "@vitest/ui": "^4.1.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
