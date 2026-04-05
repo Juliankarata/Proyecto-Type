@@ -1,12 +1,14 @@
 {
-  "name": "Proyecto Type",
+  "name": "proyecto-type",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:ci": "vitest run --reporter=html --reporter=dot"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
     "@types/node": "^25.5.0",
+    "@vitest/ui": "^4.1.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vitest": "^4.1.1"

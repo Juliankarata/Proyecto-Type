@@ -1,11 +1,11 @@
-import { CuentaBase } from './CuentaBase';
+import { CuentaBase } from './CuentaBase.js';
 
 export class CuentaCorriente extends CuentaBase {
   private _limiteDescubierto: number;
 
   constructor(titular: string, saldoInicial: number = 0, limiteDescubierto: number = 50000) {
     super(titular, saldoInicial);
-    
+
     // El límite debe ser positivo a nivel lógica (ej. 50000), aunque es un límite negativo (-50000)
     if (limiteDescubierto < 0) {
       throw new Error('El límite de descubierto debe ser un valor positivo.');

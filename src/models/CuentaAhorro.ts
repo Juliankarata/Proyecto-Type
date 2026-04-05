@@ -1,4 +1,4 @@
-import { CuentaBase } from './CuentaBase';
+import { CuentaBase } from './CuentaBase.js';
 
 export class CuentaAhorro extends CuentaBase {
   constructor(titular: string, saldoInicial: number = 0) {

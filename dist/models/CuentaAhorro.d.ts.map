@@ -1,0 +1,1 @@
+{"version":3,"file":"CuentaAhorro.d.ts","sourceRoot":"","sources":["../../src/models/CuentaAhorro.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,iBAAiB,CAAC;AAE7C,qBAAa,YAAa,SAAQ,UAAU;gBAC9B,OAAO,EAAE,MAAM,EAAE,YAAY,GAAE,MAAU;IAI9C,OAAO,CAAC,KAAK,EAAE,MAAM,EAAE,SAAS,GAAE,MAA+B,GAAG,IAAI;IAaxE,sBAAsB,CAAC,IAAI,EAAE,MAAM,GAAG,IAAI;CAOlD"}

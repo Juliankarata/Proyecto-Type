@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { CuentaAhorro } from '../src/models/CuentaAhorro';
-import { CuentaCorriente } from '../src/models/CuentaCorriente';
+import { CuentaAhorro } from '../src/models/CuentaAhorro.js';
+import { CuentaCorriente } from '../src/models/CuentaCorriente.js';
 
 describe('FinanzaTech TS - Pruebas de Cuentas', () => {
 
@@ -8,10 +8,10 @@ describe('FinanzaTech TS - Pruebas de Cuentas', () => {
     it('Debe sumar correctamente el monto depositado', () => {
       // Setup
       const cuenta = new CuentaAhorro('Julian', 1000);
-      
+
       // Acción
       cuenta.depositar(500);
-      
+
       // Verificación
       expect(cuenta.saldo).toBe(1500);
       expect(cuenta.historial.length).toBe(2); // 1. Apertura (1000), 2. Depósito (500)

@@ -1,4 +1,4 @@
-import { ITransaccion } from '../interfaces/ITransaccion';
+import type { ITransaccion } from '../interfaces/ITransaccion.js';
 
 export abstract class CuentaBase {
   private _saldo: number;
