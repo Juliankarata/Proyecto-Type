@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,22 +103,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,19 +140,19 @@ export class CuentaCorriente extends CuentaBase {
     super(titular, saldoInicial);
 &nbsp;
     // El límite debe ser positivo a nivel lógica (ej. 50000), aunque es un límite negativo (-50000)
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (limiteDescubierto &lt; 0) {
-<span class="cstat-no" title="statement not covered" >      throw new Error('El límite de descubierto debe ser un valor positivo.');</span>
+    if (limiteDescubierto &lt; 0) {
+      throw new Error('El límite de descubierto debe ser un valor positivo.');
     }
     this._limiteDescubierto = limiteDescubierto;
   }
 &nbsp;
-  get <span class="fstat-no" title="function not covered" >limiteDescubierto(): number {</span>
-<span class="cstat-no" title="statement not covered" >    return this._limiteDescubierto;</span>
+  get limiteDescubierto(): number {
+    return this._limiteDescubierto;
   }
 &nbsp;
   public extraer(monto: number, categoria: string = 'Extracción de Cuenta Corriente'): void {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (monto &lt;= 0) {
-<span class="cstat-no" title="statement not covered" >      throw new Error('El monto a extraer debe ser mayor a cero.');</span>
+    if (monto &lt;= 0) {
+      throw new Error('El monto a extraer debe ser mayor a cero.');
     }
 &nbsp;
     // Calcula si después de extraer pasa el límite negativo permitido
@@ -172,7 +172,7 @@ export class CuentaCorriente extends CuentaBase {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-05T01:50:11.962Z
+                at 2026-04-05T02:35:24.370Z
             </div>
         <script src="prettify.js"></script>
         <script>
