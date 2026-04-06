@@ -1,1 +1,1 @@
-{"version":3,"file":"ITransaccion.d.ts","sourceRoot":"","sources":["../../src/interfaces/ITransaccion.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,YAAY;IAC3B,KAAK,EAAE,MAAM,CAAC;IACd,KAAK,EAAE,IAAI,CAAC;IACZ,SAAS,EAAE,MAAM,CAAC;CACnB"}
+{"version":3,"file":"ITransaccion.d.ts","sourceRoot":"","sources":["../../src/interfaces/ITransaccion.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,YAAY;IAC3B,EAAE,CAAC,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;IACd,KAAK,EAAE,IAAI,CAAC;IACZ,SAAS,EAAE,MAAM,CAAC;IAClB,IAAI,CAAC,EAAE,UAAU,GAAG,YAAY,GAAG,eAAe,CAAC;CACpD"}

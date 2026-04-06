@@ -22,7 +22,7 @@ export class CuentaCorriente extends CuentaBase {
             throw new Error(`Fondos insuficientes. Ha superado el límite en descubierto de -$${this._limiteDescubierto}`);
         }
         this.saldo = this.saldo - monto;
-        this.registrarTransaccion(-monto, categoria);
+        this.registrarTransaccion(-monto, categoria, 'extraccion');
     }
 }
 //# sourceMappingURL=CuentaCorriente.js.map

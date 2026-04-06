@@ -1,14 +1,20 @@
+import crypto from 'node:crypto';
 export class CuentaBase {
+    _id;
     _saldo;
     _titular;
     _historial;
     constructor(titular, saldoInicial = 0) {
+        this._id = crypto.randomUUID();
         this._titular = titular;
         this._saldo = saldoInicial;
         this._historial = [];
         if (saldoInicial > 0) {
-            this.registrarTransaccion(saldoInicial, 'Apertura de cuenta');
+            this.registrarTransaccion(saldoInicial, 'Apertura de cuenta', 'deposito');
         }
+    }
+    get id() {
+        return this._id;
     }
     // Doble Encapsulamiento
     get saldo() {
@@ -28,12 +34,16 @@ export class CuentaBase {
         // Retornamos una copia para proteger el historial original (encapsulamiento)
         return [...this._historial];
     }
-    registrarTransaccion(monto, categoria) {
+    registrarTransaccion(monto, categoria, tipo) {
         const transaccion = {
+            id: crypto.randomUUID(),
             monto,
             fecha: new Date(),
             categoria,
         };
+        if (tipo) {
+            transaccion.tipo = tipo;
+        }
         this._historial.push(transaccion);
     }
     depositar(monto, categoria = 'Depósito') {
@@ -41,7 +51,16 @@ export class CuentaBase {
             throw new Error('El monto a depositar debe ser mayor a cero.');
         }
         this.saldo = this.saldo + monto;
-        this.registrarTransaccion(monto, categoria);
+        this.registrarTransaccion(monto, categoria, 'deposito');
+    }
+    // Polimorfismo en acción: transferencia utilizando la lógica abstracta de 'extraer'
+    transferir(cuentaDestino, monto) {
+        if (monto <= 0) {
+            throw new Error('El monto a transferir debe ser mayor a cero.');
+        }
+        // Llama al método polimórfico de la instancia actual
+        this.extraer(monto, `Transferencia enviada a titular: ${cuentaDestino.titular}`);
+        cuentaDestino.depositar(monto, `Transferencia recibida de titular: ${this.titular}`);
     }
 }
 //# sourceMappingURL=CuentaBase.js.map

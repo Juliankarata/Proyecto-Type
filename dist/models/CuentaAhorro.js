@@ -11,7 +11,7 @@ export class CuentaAhorro extends CuentaBase {
             throw new Error('Fondos insuficientes.');
         }
         this.saldo = this.saldo - monto;
-        this.registrarTransaccion(-monto, categoria);
+        this.registrarTransaccion(-monto, categoria, 'extraccion');
     }
     calcularInteresMensual(tasa) {
         if (tasa < 0) {

@@ -29,8 +29,4 @@ jobs:
     - name: Ejecutar pruebas (sin mostrar en consola)
       run: pnpm run test:ci
 
-    - name: Subir reporte de pruebas (HTML)
-      uses: actions/upload-artifact@v4
-      with:
-        name: reporte-pruebas-vitest
-        path: html/
+
