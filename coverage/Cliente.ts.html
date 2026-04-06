@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for CuentaCorriente.ts</title>
+    <title>Code coverage report for Cliente.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> CuentaCorriente.ts</h1>
+        <h1><a href="index.html">All files</a> Cliente.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -103,66 +103,66 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CuentaBase } from './CuentaBase.js';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { ICliente } from '../interfaces/ICliente.js';
+import type { CuentaBase } from './CuentaBase.js';
+import crypto from 'node:crypto';
 &nbsp;
-export class CuentaCorriente extends CuentaBase {
-  private _limiteDescubierto: number;
+export class Cliente implements ICliente {
+  public readonly id: string;
+  public nombre: string;
+  public email: string;
+  private _cuentas: CuentaBase[];
 &nbsp;
-  constructor(titular: string, saldoInicial: number = 0, limiteDescubierto: number = 50000) {
-    super(titular, saldoInicial);
-&nbsp;
-    // El límite debe ser positivo a nivel lógica (ej. 50000), aunque es un límite negativo (-50000)
-    if (limiteDescubierto &lt; 0) {
-      throw new Error('El límite de descubierto debe ser un valor positivo.');
-    }
-    this._limiteDescubierto = limiteDescubierto;
+  constructor(nombre: string, email: string) {
+    this.id = crypto.randomUUID();
+    this.nombre = nombre;
+    this.email = email;
+    this._cuentas = [];
   }
 &nbsp;
-  get limiteDescubierto(): number {
-    return this._limiteDescubierto;
+  // Encapsulamiento
+  get cuentas(): CuentaBase[] {
+    return [...this._cuentas]; // Retornamos copia
   }
 &nbsp;
-  public extraer(monto: number, categoria: string = 'Extracción de Cuenta Corriente'): void {
-    if (monto &lt;= 0) {
-      throw new Error('El monto a extraer debe ser mayor a cero.');
+  public agregarCuenta(cuenta: CuentaBase): void {
+    if (!cuenta) {
+      throw new Error('Cuenta no válida.');
     }
+    this._cuentas.push(cuenta);
+  }
 &nbsp;
-    // Calcula si después de extraer pasa el límite negativo permitido
-    const saldoPostExtraccion = this.saldo - monto;
-    if (saldoPostExtraccion &lt; -this._limiteDescubierto) {
-      throw new Error(`Fondos insuficientes. Ha superado el límite en descubierto de -$${this._limiteDescubierto}`);
-    }
-&nbsp;
-    this.saldo = this.saldo - monto;
-    this.registrarTransaccion(-monto, categoria, 'extraccion');
+  // Polimorfismo demostrado: itera sobre cualquier implementación de CuentaBase
+  public obtenerBalanceTotal(): number {
+    return this._cuentas.reduce((total, cuenta) =&gt; total + cuenta.saldo, 0);
   }
 }
 &nbsp;</pre></td></tr></table></pre>

@@ -96,4 +96,21 @@ describe('FinanzaTech TS - Pruebas de Cuentas', () => {
     });
   });
 
+  describe('Prueba de Transferencias Directas entre Cuentas (Polimorfismo)', () => {
+    it('Debe transferir monto de una cuenta a otra correctamente resolviendo polimorfismo', () => {
+      const cuenta1 = new CuentaAhorro('Ana', 1000);
+      const cuenta2 = new CuentaCorriente('Juan', 0, 10000); // 0 saldo inicial, 10000 de giro al descubierto
+      
+      cuenta1.transferir(cuenta2, 300);
+      expect(cuenta1.saldo).toBe(700); // 1000 - 300
+      expect(cuenta2.saldo).toBe(300); // 0 + 300
+    });
+
+    it('Debe fallar al transferir un monto inválido', () => {
+      const cuenta1 = new CuentaAhorro('Ana', 1000);
+      const cuenta2 = new CuentaCorriente('Juan', 0, 10000);
+      expect(() => cuenta1.transferir(cuenta2, 0)).toThrowError('El monto a transferir debe ser mayor a cero.');
+    });
+  });
+
 });

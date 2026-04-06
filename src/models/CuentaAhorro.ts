@@ -15,7 +15,7 @@ export class CuentaAhorro extends CuentaBase {
     }
 
     this.saldo = this.saldo - monto;
-    this.registrarTransaccion(-monto, categoria);
+    this.registrarTransaccion(-monto, categoria, 'extraccion');
   }
 
   public calcularInteresMensual(tasa: number): void {

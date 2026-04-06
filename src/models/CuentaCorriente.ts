@@ -29,6 +29,6 @@ export class CuentaCorriente extends CuentaBase {
     }
 
     this.saldo = this.saldo - monto;
-    this.registrarTransaccion(-monto, categoria);
+    this.registrarTransaccion(-monto, categoria, 'extraccion');
   }
 }
