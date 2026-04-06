@@ -9,7 +9,7 @@
     "build": "tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:ci": "vitest run --coverage --reporter=html --reporter=dot"
+    "test:ci": "vitest run --coverage --reporter=verbose --reporter=dot"
   },
   "keywords": [],
   "author": "",
