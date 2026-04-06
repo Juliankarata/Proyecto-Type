@@ -45,3 +45,48 @@ Podr√°s operar con el proyecto a trav√©s de los siguientes comandos:
   ```bash
   pnpm run test:coverage
   ```
+
+
+## Logs y Salidas Antiguas
+
+### Errores de TranspilaciÛn (tsc_error.txt)
+
+```text
+src/models/CuentaAhorro.ts(1,10): error TS1295: ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'. Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module, or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
+src/models/CuentaAhorro.ts(3,1): error TS1287: A top-level 'export' modifier cannot be used on value declarations in a CommonJS module when 'verbatimModuleSyntax' is enabled.
+src/models/CuentaBase.ts(1,10): error TS1295: ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'. Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module, or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
+src/models/CuentaBase.ts(1,10): error TS1484: 'ITransaccion' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/models/CuentaBase.ts(3,1): error TS1287: A top-level 'export' modifier cannot be used on value declarations in a CommonJS module when 'verbatimModuleSyntax' is enabled.
+src/models/CuentaCorriente.ts(1,10): error TS1295: ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'. Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module, or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
+src/models/CuentaCorriente.ts(3,1): error TS1287: A top-level 'export' modifier cannot be used on value declarations in a CommonJS module when 'verbatimModuleSyntax' is enabled.
+
+
+```
+
+### Salida de Cobertura (coverage_output.txt)
+
+```text
+
+[1m[46m RUN [49m[22m [36mv4.1.1 [39m[90mC:/Users/Julian Karata/Documents/Programacion/Proyecto Type[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m‘£Ù[39m test/Cuenta.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 22:50:11
+[2m   Duration [22m 885ms[2m (transform 104ms, setup 0ms, import 165ms, tests 16ms, environment 0ms)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    72.5 |    74.07 |   76.92 |    72.5 |                   
+ CuentaAhorro.ts   |   54.54 |     62.5 |   66.66 |   54.54 | 10,22-26          
+ CuentaBase.ts     |   82.35 |       80 |   85.71 |   82.35 | 26,32,51          
+ ...taCorriente.ts |      75 |    77.77 |   66.66 |      75 | 11,17,22          
+-------------------|---------|----------|---------|---------|-------------------
+
+
+```
+
